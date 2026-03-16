@@ -24,8 +24,13 @@ private:
     };
 public:
     Goat() {
+        // Generate a random age between 1 and 20
         age = (rand() % (MAX_LS - MIN_RND + 1) + MIN_RND);
+
+        // Select a random name from the names array (15 possible names)
         name = names[rand() % (ARR_SIZE - MIN_RND + 1) + MIN_RND - 1];
+
+        // Select a random color from the colors array (15 possible colors)
         color = colors[rand() % (ARR_SIZE - MIN_RND + 1) + MIN_RND - 1];
     }
 
@@ -34,7 +39,7 @@ public:
     int getAge() const { return age; }
 
     void print() const {
-        cout << name << " (" << age << ", " << color << ")";
+        cout << '\t' << name << " (" << age << ", " << color << ")";
     }
 };
 
@@ -172,8 +177,6 @@ public:
     }
 };
 
-
-
 // Driver program
 int main() {
     srand(time(0));
@@ -187,11 +190,6 @@ int main() {
 
     cout << "List backward: \n";
     list.print_reverse();
-
-    cout << "Deleting list, then trying to print.\n";
-    list.~DoublyLinkedList();
-    cout << "List forward: ";
-    list.print();
 
     return 0;
 }
