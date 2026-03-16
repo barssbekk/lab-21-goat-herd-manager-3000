@@ -7,13 +7,36 @@ using namespace std;
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, MIN_RND = 1,
           ARR_SIZE = 15;
 
+class Goat {
+private:
+    int age;
+    string name;
+    string color;
+    string names[15]{
+        "Alex", "Mia", "Liam", "Olivia", "Noah",
+        "Emma", "Lucas", "Sophia", "Ethan", "Ava",
+        "Daniel", "Isabella", "James", "Amelia", "Henry"
+    };
+    string colors[15]{
+        "red", "blue", "green", "yellow", "black",
+        "white", "purple", "orange", "pink", "brown",
+        "gray", "cyan", "magenta", "lime", "navy"
+    };
+public:
+    Goat() {
+        age = (rand() % (MAX_LS - MIN_RND + 1) + MIN_RND);
+        name = names[rand() % (ARR_SIZE - MIN_RND + 1) + MIN_RND - 1];
+        color = colors[rand() % (ARR_SIZE - MIN_RND + 1) + MIN_RND - 1];
+    }
+};
+
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        Goat data;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
+        Node(Goat val, Node* p = nullptr, Node* n = nullptr) {
             data = val;
             prev = p;
             next = n;
@@ -27,7 +50,7 @@ public:
     // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void push_back(int value) {
+    void push_back(Goat value) {
         Node* newNode = new Node(value);
         if (!tail)  // if there's no tail, the list is empty
             head = tail = newNode;
@@ -38,7 +61,7 @@ public:
         }
     }
 
-    void push_front(int value) {
+    void push_front(Goat value) {
         Node* newNode = new Node(value);
         if (!head)  // if there's no head, the list is empty
             head = tail = newNode;
@@ -49,7 +72,7 @@ public:
         }
     }
 
-    void insert_after(int value, int position) {
+    void insert_after(Goat value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
@@ -80,7 +103,7 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(int value) {
+    void delete_node(Goat value) {
         if (!head) return; // Empty list
 
         Node* temp = head;
@@ -133,28 +156,7 @@ public:
     }
 };
 
-class Goat {
-private:
-    int age;
-    string name;
-    string color;
-    string names[15]{
-        "Alex", "Mia", "Liam", "Olivia", "Noah",
-        "Emma", "Lucas", "Sophia", "Ethan", "Ava",
-        "Daniel", "Isabella", "James", "Amelia", "Henry"
-    };
-    string colors[15]{
-        "red", "blue", "green", "yellow", "black",
-        "white", "purple", "orange", "pink", "brown",
-        "gray", "cyan", "magenta", "lime", "navy"
-    };
-public:
-    Goat() {
-        age = (rand() % (MAX_LS - MIN_RND + 1) + MIN_RND);
-        name = names[rand() % (ARR_SIZE - MIN_RND + 1) + MIN_RND - 1];
-        color = colors[rand() % (ARR_SIZE - MIN_RND + 1) + MIN_RND - 1];
-    }
-};
+
 
 // Driver program
 int main() {
