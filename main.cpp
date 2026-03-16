@@ -136,20 +136,24 @@ public:
     }
 
     void print() {
+        if (!head) {
+            cout << "List is empty\n";
+            return;
+        }
+
         Node* current = head;
-        if (!current) return;
         while (current) {
             current->data.print();
+            cout << endl;
             current = current->next;
         }
-        cout << endl;
     }
 
     void print_reverse() {
         Node* current = tail;
         if (!current) return;
         while (current) {
-            cout << current->data << " ";
+            current->data.print();
             current = current->prev;
         }
         cout << endl;
