@@ -28,6 +28,14 @@ public:
         name = names[rand() % (ARR_SIZE - MIN_RND + 1) + MIN_RND - 1];
         color = colors[rand() % (ARR_SIZE - MIN_RND + 1) + MIN_RND - 1];
     }
+
+    string getName() const { return name; }
+    string getColor() const { return color; }
+    int getAge() const { return age; }
+
+    void print() const {
+        cout << name << " (" << age << ", " << color << ")";
+    }
 };
 
 class DoublyLinkedList {
@@ -72,7 +80,7 @@ public:
         }
     }
 
-    void insert_after(Goat value, int position) {
+    void insert_after(int value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
@@ -131,7 +139,7 @@ public:
         Node* current = head;
         if (!current) return;
         while (current) {
-            cout << current->data << " ";
+            current->data.print();
             current = current->next;
         }
         cout << endl;
