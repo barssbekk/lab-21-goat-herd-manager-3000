@@ -80,7 +80,7 @@ public:
         }
     }
 
-    void insert_after(int value, int position) {
+    void insert_after(Goat value, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
@@ -115,7 +115,7 @@ public:
         if (!head) return; // Empty list
 
         Node* temp = head;
-        while (temp && temp->data != value)
+        while (temp && temp->data.getAge() != value.getAge()) // Compare int for now
             temp = temp->next;
 
         if (!temp) return; // Value not found
@@ -135,7 +135,7 @@ public:
         delete temp;
     }
 
-    void print() {
+    void print() const {
         if (!head) {
             cout << "List is empty\n";
             return;
@@ -144,19 +144,23 @@ public:
         Node* current = head;
         while (current) {
             current->data.print();
-            cout << endl;
+            cout << '\n';
             current = current->next;
         }
     }
 
-    void print_reverse() {
+    void print_reverse() const {
+        if (!tail) {
+            cout << "List is empty\n";
+            return;
+        }
+
         Node* current = tail;
-        if (!current) return;
         while (current) {
             current->data.print();
+            cout << '\n';
             current = current->prev;
         }
-        cout << endl;
     }
 
     ~DoublyLinkedList() {
@@ -178,10 +182,10 @@ int main() {
 
     for (int i = 0; i < size; ++i)
         list.push_back(Goat());
-    cout << "List forward: ";
+    cout << "List forward: \n";
     list.print();
 
-    cout << "List backward: ";
+    cout << "List backward: \n";
     list.print_reverse();
 
     cout << "Deleting list, then trying to print.\n";
