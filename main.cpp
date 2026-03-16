@@ -1,9 +1,10 @@
 // COMSC-210 | Lab 21 | Barsbek
 #include <iostream>
 #include <string>
+#include <ctime>
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20, MIN_RND = 1;
 
 class DoublyLinkedList {
 private:
@@ -146,6 +147,10 @@ private:
         "white", "purple", "orange", "pink", "brown",
         "gray", "cyan", "magenta", "lime", "navy"
     };
+    Goat() {
+        age = (rand() % (MAX_LS - MIN_RND + 1) + MIN_RND);
+        cout << "Age " << age << '\n';
+    }
 };
 
 // Driver program
