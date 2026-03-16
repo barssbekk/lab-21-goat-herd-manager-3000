@@ -165,7 +165,7 @@ int main() {
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
     for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+        list.push_back(Goat());
     cout << "List forward: ";
     list.print();
 
